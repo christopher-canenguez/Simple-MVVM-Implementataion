@@ -4,45 +4,56 @@
  */
 package models;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author MoaathAlrajab
  */
 public class Person {
-    private String name;
-    private String Major;
+    private SimpleStringProperty name;
+    private SimpleStringProperty major;
     private int age;
 
     public Person(String name, String Major, int age) {
-        this.name = name;
-        this.Major = Major;
+        this.name = new SimpleStringProperty(name);
+        this.major = new SimpleStringProperty(Major);;
         this.age = age;
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String newName) {
+        //this.name = name;
+        name.set(newName);
     }
 
     public String getMajor() {
-        return Major;
+        return major.get();
     }
 
     public void setMajor(String Major) {
-        this.Major = Major;
+        //this.major = Major;
+        major.set(Major);
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
     
-    
+    public String toString() {
+        String result = 
+                "Name: " + getName() + "\n" + 
+                "Major: " + getMajor() + "\n" + 
+                "Age: " + getAge();
+        
+        return result;
+    }
     
 }
